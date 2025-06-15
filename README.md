@@ -15,8 +15,8 @@ Build a modular, LangChain-powered system that discovers, analyzes, and processe
 > **⚡ CRITICAL**: If you're an AI assistant working on this project, read these files FIRST:
 
 ### 📋 **1. Session Context Files**
-- **`AI_SESSION_LOG.md`** - Complete session history, actions taken, and project context
-- **`CODEBASE_MAP.md`** - Detailed architecture map with implementation status
+- **`docs/developer/AI_SESSION_LOG.md`** - Complete session history, actions taken, and project context
+- **`docs/developer/CODEBASE_MAP.md`** - Detailed architecture map with implementation status
 - **Recent Git commits** - Use `git log --oneline -10` to see latest changes
 
 ### 🎯 **2. Dynamic Prompt System** 
