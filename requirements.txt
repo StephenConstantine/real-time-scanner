@@ -2,6 +2,9 @@
 
 # AI and Language Models
 openai>=1.0.0
+langchain>=0.3.25
+langchain-openai>=0.3.23
+langchain-community>=0.3.25
 
 # Web framework for API endpoints
 fastapi>=0.104.0
@@ -32,6 +35,8 @@ pydantic>=2.4.0
 # Testing (optional)
 pytest>=7.4.0
 pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+coverage>=7.3.0
 
 # Development tools (optional)
 black>=23.9.0

@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "timestamp": "2025-06-15T23:25:11.528386",
+    "urgency_level": "high",
+    "event_type": "global",
+    "total_events": 7
+  },
+  "events": [
+    {
+      "index": 1,
+      "title": "Major Earthquake in Japan",
+      "description": "A 7.2 magnitude earthquake has struck off the coast of Japan, triggering tsunami warnings.",
+      "location": "Tokyo, Japan",
+      "emoji": "🌍"
+    },
+    {
+      "index": 2,
+      "title": "COVID-19 Vaccine Breakthrough",
+      "description": "A new COVID-19 vaccine has shown 95% efficacy in latest trials.",
+      "location": "Global",
+      "emoji": "💉"
+    },
+    {
+      "index": 3,
+      "title": "Wildfires in California",
+      "description": "Wildfires continue to ravage California, with thousands of acres destroyed.",
+      "location": "California, USA",
+      "emoji": "🔥"
+    },
+    {
+      "index": 4,
+      "title": "Political Unrest in Belarus",
+      "description": "Protests continue in Belarus following disputed presidential elections.",
+      "location": "Minsk, Belarus",
+      "emoji": "👥"
+    },
+    {
+      "index": 5,
+      "title": "Floods in Bangladesh",
+      "description": "Severe flooding in Bangladesh has displaced thousands of people.",
+      "location": "Dhaka, Bangladesh",
+      "emoji": "🌊"
+    },
+    {
+      "index": 6,
+      "title": "Tech Giant's Data Breach",
+      "description": "A major tech company has suffered a significant data breach, affecting millions of users.",
+      "location": "Silicon Valley, USA",
+      "emoji": "💻"
+    },
+    {
+      "index": 7,
+      "title": "Climate Change Summit",
+      "description": "World leaders meet for a climate change summit to discuss urgent environmental issues.",
+      "location": "Paris, France",
+      "emoji": "🌳"
+    }
+  ]
+}

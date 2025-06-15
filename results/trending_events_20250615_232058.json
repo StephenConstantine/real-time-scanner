@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "timestamp": "2025-06-15T23:20:58.948255",
+    "urgency_level": "high",
+    "event_type": "global",
+    "total_events": 7
+  },
+  "events": [
+    {
+      "index": 1,
+      "title": "Example Event 1",
+      "description": "This is an example of a brief description for event 1.",
+      "location": "Example Location 1",
+      "emoji": "📍"
+    },
+    {
+      "index": 2,
+      "title": "Example Event 2",
+      "description": "This is an example of a brief description for event 2.",
+      "location": "Example Location 2",
+      "emoji": "🌍"
+    },
+    {
+      "index": 3,
+      "title": "Example Event 3",
+      "description": "This is an example of a brief description for event 3.",
+      "location": "Example Location 3",
+      "emoji": "🔥"
+    },
+    {
+      "index": 4,
+      "title": "Example Event 4",
+      "description": "This is an example of a brief description for event 4.",
+      "location": "Example Location 4",
+      "emoji": "💥"
+    },
+    {
+      "index": 5,
+      "title": "Example Event 5",
+      "description": "This is an example of a brief description for event 5.",
+      "location": "Example Location 5",
+      "emoji": "🌊"
+    },
+    {
+      "index": 6,
+      "title": "Example Event 6",
+      "description": "This is an example of a brief description for event 6.",
+      "location": "Example Location 6",
+      "emoji": "⚡"
+    },
+    {
+      "index": 7,
+      "title": "Example Event 7",
+      "description": "This is an example of a brief description for event 7.",
+      "location": "Example Location 7",
+      "emoji": "🌪️"
+    }
+  ]
+}

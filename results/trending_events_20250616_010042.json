@@ -1,0 +1,59 @@
+{
+  "metadata": {
+    "timestamp": "2025-06-16T01:00:42.788477",
+    "urgency_level": "high",
+    "event_type": "global",
+    "total_events": 7
+  },
+  "events": [
+    {
+      "index": 1,
+      "title": "Minnesota Lawmaker Assassinated",
+      "description": "Minnesota Rep. Melissa Hortman was killed and state Sen. John Hoffman injured in targeted shootings.",
+      "location": "Minnesota, USA",
+      "emoji": "🔫"
+    },
+    {
+      "index": 2,
+      "title": "Air India Plane Crash Death Toll Rises",
+      "description": "The death toll from the Air India plane crash has risen to 270.",
+      "location": "Ahmedabad, India",
+      "emoji": "✈️💥"
+    },
+    {
+      "index": 3,
+      "title": "Israel and Iran Resume Missile Strikes",
+      "description": "Israel and Iran have resumed missile strikes, deepening the ongoing conflict.",
+      "location": "Israel and Iran",
+      "emoji": "🚀"
+    },
+    {
+      "index": 4,
+      "title": "Trump Administration Considers Travel Ban Expansion",
+      "description": "The Trump administration is considering adding 36 countries to its travel ban.",
+      "location": "USA",
+      "emoji": "🚫✈️"
+    },
+    {
+      "index": 5,
+      "title": "‘No Kings’ Protester Killed in Utah",
+      "description": "A ‘No Kings’ demonstrator was shot and killed at a protest in Utah.",
+      "location": "Utah, USA",
+      "emoji": "🔫👥"
+    },
+    {
+      "index": 6,
+      "title": "Trump Returns to G7 Amidst Rift With Allies",
+      "description": "As Trump returns to the G7, rifts with allies have deepened.",
+      "location": "USA",
+      "emoji": "🌐🇺🇸"
+    },
+    {
+      "index": 7,
+      "title": "Netanyahu Reveals Iran's Assassination Plot Against Trump",
+      "description": "Israeli Prime Minister Benjamin Netanyahu reveals Iran marked Trump as 'enemy number one' with an assassination plot.",
+      "location": "Israel",
+      "emoji": "🎯🇮🇷"
+    }
+  ]
+}

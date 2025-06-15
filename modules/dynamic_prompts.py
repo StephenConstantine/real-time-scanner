@@ -100,7 +100,11 @@ You're an expert AI news scout with real-time awareness. Your mission:
 """
         
         # 📊 Log prompt generation for performance tracking
-        self._log_prompt_usage("trending_events", context.dict())
+        self._log_prompt_usage("trending_events", {
+            "event_name": context.event_name,
+            "event_type": context.event_type,
+            "urgency_level": context.urgency_level
+        })
         
         return prompt.strip()
     
@@ -145,7 +149,11 @@ For each category, provide:
 Start with the most time-sensitive category for immediate intelligence gathering.
 """
         
-        self._log_prompt_usage("event_analysis", context.dict())
+        self._log_prompt_usage("event_analysis", {
+            "event_name": context.event_name,
+            "event_type": context.event_type,
+            "urgency_level": context.urgency_level
+        })
         return prompt.strip()
     
     def generate_content_retrieval_prompt(self, platform: str, query: str, context: PromptContext) -> str:
@@ -220,7 +228,12 @@ For each item, extract:
 🎯 **SUCCESS CRITERIA**: Results must provide actionable intelligence about "{context.event_name}"
 """
         
-        self._log_prompt_usage(f"{platform}_retrieval", {"query": query, **context.dict()})
+        self._log_prompt_usage(f"{platform}_retrieval", {
+            "query": query,
+            "event_name": context.event_name,
+            "event_type": context.event_type,
+            "urgency_level": context.urgency_level
+        })
         return prompt.strip()
     
     def _get_event_focus(self, event_type: str) -> str:

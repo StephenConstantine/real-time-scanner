@@ -1,0 +1,49 @@
+{
+  "trending_events": [
+    {
+      "timestamp": "2025-06-15T23:04:32.745283",
+      "context": {
+        "event_name": "trending_discovery",
+        "event_type": "global",
+        "urgency_level": "high"
+      },
+      "success": null
+    },
+    {
+      "timestamp": "2025-06-15T23:19:51.647577",
+      "context": {
+        "event_name": "trending_discovery",
+        "event_type": "global",
+        "urgency_level": "high"
+      },
+      "success": null
+    },
+    {
+      "timestamp": "2025-06-15T23:20:10.443854",
+      "context": {
+        "event_name": "trending_discovery",
+        "event_type": "global",
+        "urgency_level": "high"
+      },
+      "success": null
+    },
+    {
+      "timestamp": "2025-06-15T23:20:45.294257",
+      "context": {
+        "event_name": "trending_discovery",
+        "event_type": "global",
+        "urgency_level": "high"
+      },
+      "success": null
+    },
+    {
+      "timestamp": "2025-06-15T23:24:58.964717",
+      "context": {
+        "event_name": "trending_discovery",
+        "event_type": "global",
+        "urgency_level": "high"
+      },
+      "success": null
+    }
+  ]
+}

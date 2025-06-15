@@ -1,7 +1,12 @@
-# 🚀 **Real-Time Event Exploration System: Developer Handoff Document**
+# 🚀 **Real-Time Event Intelligence System**
 
 **Goal:**
-Build a modular, AI-driven system that conversationally guides users through discovering, analyzing, retrieving, and organizing real-time event information.
+Build a modular, LangChain-powered system that discovers, analyzes, and processes real-time events using actual data sources (no AI hallucinations).
+
+## 🎯 **Current Status: WORKING REAL-TIME INTELLIGENCE**
+✅ **Step 0 COMPLETE**: Real Google News data via Serper API + AI analysis  
+🚧 **Steps 1-4**: Ready for LangChain-native implementation  
+📚 **LangChain Integration**: Full documentation and patterns prepared
 
 ---
 
@@ -27,6 +32,10 @@ Build a modular, AI-driven system that conversationally guides users through dis
 - **📊 Updates**: Automatically updates session logs with git status and changes
 
 ### 🎨 **4. Code Style Guidelines**
+- **📋 `CODING_GUIDE.md`** - **REQUIRED READING**: Complete coding standards and documentation guide
+- **🚩 The Amnesiac Coder Guide**: All code must follow this structure for instant clarity
+- **📑 File Structure**: Every file needs PURPOSE, DEPENDENCIES, and STRUCTURE sections
+- **🔍 Keywords**: Tag functions for AI/human searchability
 - **Emojis for visual scanning**: 🔍 🚀 ⚠️ 💡 🔧 📊 🎯
 - **Self-documenting code**: Clear variable names and comprehensive docstrings
 - **Status indicators**: ✅ implemented, ❓ needs review, 🔄 in progress
@@ -51,12 +60,12 @@ real time scanner/
 │
 ├── modules/                       # 🏗️ Core processing pipeline
 │   ├── 🎯 dynamic_prompts.py      # ✅ Context-aware prompt generation
-│   ├── step_0_trending_events.py  # ❓ Event detection (needs implementation)
+│   ├── step_0_trending_events.py  # ✅ Event detection (COMPLETED)
 │   ├── step_1_event_analysis.py   # ❓ Analysis engine (needs implementation)
 │   ├── step_2_content_retrieval.py # ❓ Content fetcher (needs implementation)
 │   ├── step_3_data_normalization.py # ❓ Data cleaner (needs implementation)
 │   ├── step_4_final_integration.py # ❓ Final integration (needs implementation)
-│   ├── models.py                   # ❓ Data models (needs implementation)
+│   ├── models.py                   # ✅ Data models (COMPLETED)
 │   ├── utils.py                    # ❓ Helper functions (needs implementation)
 │   └── __init__.py                 # ✅ Package initializer
 │
@@ -67,6 +76,14 @@ real time scanner/
 ├── results/                       # 📊 Output storage
 │   └── __init__.py                 # ✅ Package initializer
 │
+├── tests/                         # 🧪 Test suite
+│   ├── conftest.py                 # ✅ Pytest configuration & fixtures
+│   ├── test_models.py              # ✅ Data model tests
+│   ├── test_utils.py               # ✅ Utility function tests
+│   └── README.md                   # ✅ Testing documentation
+│
+├── run_tests.py                   # 🏃 Test runner script
+├── pytest.ini                     # ⚙️ Pytest configuration
 ├── requirements.txt               # 📋 Dependencies
 ├── .env.template                  # 🔐 Environment config template
 └── README.md                      # 📖 This documentation
@@ -185,10 +202,46 @@ Clearly structured conversational checkpoints at each retrieval step:
 
 ## 🛠 **8. Technical Stack & Recommendations**
 
-* Python as primary language.
-* OpenAI API (GPT models) recommended for AI-powered tasks.
-* JSON clearly structured outputs for data portability.
-* Optionally, cloud integration (AWS, Google Cloud) for scaling.
+* **Python 3.8+** as primary language
+* **OpenAI API** (GPT-4) for AI-powered tasks - **REQUIRED for Step 0**
+* **Environment Setup**: Copy `.env.template` to `.env` and add your OpenAI API key
+* **JSON structured outputs** for data portability
+* **Dynamic prompting system** via `modules/dynamic_prompts.py`
+* Optionally, cloud integration (AWS, Google Cloud) for scaling
+
+### **🔑 Required Setup:**
+```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Set up environment
+cp .env.template .env
+# Edit .env and add: OPENAI_API_KEY=your-api-key-here
+
+# 3. Test Step 0
+python modules/step_0_trending_events.py
+```
+
+### **🧪 Testing System:**
+```bash
+# Run all tests
+make test
+
+# Run specific test categories
+make test-unit           # Fast unit tests
+make test-integration    # Integration tests
+make test-coverage       # With coverage report
+
+# Test specific modules
+make test-models         # Data model tests
+make test-utils          # Utility function tests
+
+# Alternative: Direct pytest
+python -m pytest
+python run_tests.py --type unit --verbose
+```
+
+**📋 Test Coverage**: Comprehensive test suite with fixtures, mocking, and 90%+ coverage target. See `tests/README.md` for detailed testing documentation.
 
 ---
 
@@ -415,4 +468,174 @@ Confirm completion explicitly by stating:
 ---
 
 *These prompt examples demonstrate the exact conversational flow and dynamic context chaining that powers the Real-Time Event Exploration System.*
+
+---
+
+# 🔗 **API INTEGRATION ROADMAP (Future Development)**
+
+## 🎯 **Evolution Strategy: Prompt-First → API-Hybrid → API-Priority**
+
+### **Current State: Prompt-Only Mode** ✅
+- Uses ChatGPT web search capabilities
+- Dynamic prompt generation via `DynamicPromptGenerator`
+- Perfect for rapid prototyping and testing
+- Zero API costs during development
+
+### **Future State: API Integration Toggle** 🔮
+
+#### **📋 Phase 1: Infrastructure Setup**
+```bash
+# Environment variables to add
+APP_MODE=prompt                    # prompt | api | hybrid
+API_FALLBACK_ENABLED=true         # Falls back to prompts if APIs fail
+API_COST_LIMIT_DAILY=50.00        # Daily spending limit
+API_RATE_LIMIT_GLOBAL=1000         # Global rate limit per hour
+```
+
+#### **🏗️ Phase 2: API Abstraction Layer**
+Create modular API managers that slot into existing pipeline:
+
+```python
+# modules/api_manager.py (Future)
+class APIManager:
+    def __init__(self, mode="prompt"):
+        self.mode = mode
+        self.twitter_api = TwitterAPIClient() if mode != "prompt" else None
+        self.youtube_api = YouTubeAPIClient() if mode != "prompt" else None
+        # etc.
+    
+    def fetch_content(self, platform, query, context):
+        if self.mode == "prompt" or not self._api_available(platform):
+            return self._prompt_fallback(platform, query, context)
+        return self._api_call(platform, query, context)
+```
+
+#### **🎛️ Phase 3: Mode-Aware Module Enhancement**
+Existing modules become mode-aware without structural changes:
+
+```python
+# Enhancement to existing step modules
+def execute(self, context, mode=None):
+    mode = mode or os.getenv("APP_MODE", "prompt")
+    
+    if mode == "prompt":
+        return self._current_prompt_execution(context)  # Current system
+    elif mode == "api":
+        return self._api_execution(context)             # New API path
+    else:  # hybrid mode
+        return self._hybrid_execution(context)          # API + prompt fallback
+```
+
+## 🌐 **Target API Integrations**
+
+### **🐦 Social Media APIs**
+- **Twitter/X API v2**: Real-time tweets, trending topics
+- **TikTok Research API**: Viral content, hashtag tracking
+- **Reddit API**: Community discussions, trending posts
+
+### **📺 Video & Media APIs**
+- **YouTube Data API v3**: Video search, live streams, trending
+- **Twitch API**: Live gaming/event streams
+- **Vimeo API**: Professional video content
+
+### **🏛️ Official & News APIs**
+- **NewsAPI**: Breaking news from verified sources
+- **Associated Press API**: Wire service feeds
+- **Government APIs**: CAL FIRE, NOAA, USGS, etc.
+- **Emergency Services APIs**: Local emergency feeds
+
+### **🗺️ Geographic & Real-time APIs**
+- **SerpAPI**: Google search results
+- **Webcam APIs**: Live camera feeds
+- **Traffic APIs**: Real-time traffic/incident data
+- **Weather APIs**: Real-time weather conditions
+
+## 💰 **Cost Management Strategy**
+
+### **🎯 Smart API Usage**
+```python
+# Cost-aware API routing
+class CostAwareRouter:
+    def route_query(self, query, urgency, budget_remaining):
+        if urgency == "high" and budget_remaining > 10:
+            return "premium_apis"  # Twitter, YouTube Premium
+        elif budget_remaining > 2:
+            return "standard_apis"  # Basic tier APIs
+        else:
+            return "prompt_mode"    # Fallback to free prompts
+```
+
+### **📊 API Cost Tiers**
+- **🔥 High Priority**: Breaking news, emergency events → Premium APIs
+- **⚖️ Medium Priority**: General trends → Standard APIs  
+- **🌱 Low Priority**: Background research → Prompt mode
+
+## 🔄 **Implementation Phases**
+
+### **✅ Phase 0: Current (Prompt-Only)**
+- Dynamic prompt system working
+- Modular architecture established
+- Context passing functional
+
+### **🔄 Phase 1: Foundation (2-3 days)**
+- [ ] Add mode configuration system
+- [ ] Create API manager base classes
+- [ ] Implement cost tracking utilities
+- [ ] Add API credential management
+
+### **🔄 Phase 2: Core APIs (1-2 weeks)**
+- [ ] Twitter/X API integration
+- [ ] YouTube API integration
+- [ ] SerpAPI integration
+- [ ] Basic hybrid mode functionality
+
+### **🔄 Phase 3: Advanced Features (2-3 weeks)**
+- [ ] Rate limiting and cost controls
+- [ ] Intelligent API selection
+- [ ] Performance optimization
+- [ ] Advanced fallback strategies
+
+### **🔄 Phase 4: Production Ready (1 week)**
+- [ ] Error handling and monitoring
+- [ ] API health checks
+- [ ] Usage analytics
+- [ ] Documentation and testing
+
+## 🏛️ **Architecture Benefits**
+
+### **🎯 Why Current Structure is API-Ready:**
+1. **Context Passing**: `PromptContext` can hold both prompt instructions and API responses
+2. **Data Normalization**: Step 3 already handles different data formats
+3. **Dynamic Prompts**: Can generate API query instructions or human prompts
+4. **Modular Pipeline**: Each step can independently choose data source
+
+### **🔄 Migration Path:**
+```python
+# Current: Prompt-based execution
+result = step_2_content_retrieval(prompt_context)
+
+# Future: Mode-aware execution  
+result = step_2_content_retrieval(prompt_context, mode="api")
+
+# Hybrid: API with prompt fallback
+result = step_2_content_retrieval(prompt_context, mode="hybrid")
+```
+
+## 🚨 **Development Guidelines**
+
+### **⚡ Critical Principles:**
+- **Never break prompt mode** - Always maintain fallback capability
+- **Cost-conscious by default** - Implement spending limits from day one
+- **Graceful degradation** - API failures should fall back to prompts
+- **Performance first** - APIs should improve speed, not slow it down
+
+### **🎯 Success Metrics:**
+- **Speed**: API mode should be 3-5x faster than prompt mode
+- **Quality**: API data should match or exceed prompt-generated content
+- **Reliability**: >95% uptime with automatic fallbacks
+- **Cost**: Stay under $2/query average for premium events
+
+---
+
+**💡 Key Insight**: The current prompt-based system isn't a prototype—it's the foundation. API integration will enhance it, not replace it.
 
