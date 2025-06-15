@@ -1,0 +1,174 @@
+### Trending Events Discovery Prompt
+
+You're an AI-powered news scout. Quickly identify 7 trending real-time events happening now. For each event, clearly provide:
+
+- Event Title
+- Brief one-line description  
+- Primary Location
+- Relevant Emoji for instant recognition
+
+Format it as a numbered list. Only include real-world events happening right now. GO!
+
+---
+
+### Event Analysis & Search Setup Prompt
+
+You're an expert analyst AI. The selected event is: **[SELECTED_EVENT]**
+
+### 📌 SUMMARY:
+Provide a concise 2–3 sentence overview describing:
+- Why and where the event is happening
+- What's currently unfolding
+
+### 📍 LOCATIONS:
+List all key locations/neighborhoods impacted by this event today.
+
+### 🗂 INFORMATION CATEGORIES & SEARCH PLAN:
+Choose exactly 4 relevant real-time content categories to comprehensively cover this event.
+
+Structure exactly like this:
+
+**Twitter Updates**
+- Optimized Search Query: "[provide exact query]"
+- Why It's Useful: Social media updates from eyewitnesses, organizers, and official voices.
+
+**YouTube Live & Clips**
+- Optimized Search Query: "[provide exact query]"
+- Why It's Useful: Real-time visual coverage providing situational awareness.
+
+**Official Reports**
+- Optimized Search Query: "[provide exact query using official domains like whitehouse.gov, cityofla.org, ca.gov, lapdonline.org]"
+- Why It's Useful: Verified statements from government or authoritative official sources.
+
+**Live Webcams (Live YouTube or Google video feeds)**
+- Optimized Search Query: "[provide exact query searching live webcams or currently live video streams]"
+- Why It's Useful: Real-time visuals of event areas directly from live webcams or streams.
+
+Finally, clearly produce an expert-level subtask prompt for **Twitter Updates** using this template:
+
+> You're an expert AI [Category] investigator.  
+> Use this exact query: "[QUERY]"  
+> Retrieve top preview items and await confirmation before deep dive.
+
+---
+
+### Twitter Retrieval Prompt
+
+You're an expert AI Twitter investigator.
+
+Search Twitter immediately using this exact query:
+"[DYNAMIC_TWITTER_QUERY]"
+
+Fetch the top 3–5 most relevant tweets, prioritizing verified sources, organizers, and influential accounts. Include clearly:
+
+- Author username
+- Exact tweet content
+- Tweet timestamp
+- Likes & retweets count
+- Direct URL
+
+First, briefly preview these results. Await approval before retrieving full results.
+
+---
+
+### YouTube Retrieval Prompt
+
+You're an expert AI YouTube investigator.
+
+Immediately search YouTube using this exact query:
+"[DYNAMIC_YOUTUBE_QUERY]"
+
+Find the top 2–3 authoritative recent videos or live streams related to "[EVENT_NAME]". Clearly provide each item's:
+
+- Channel name
+- Video title
+- One-sentence summary
+- Upload or live timestamp
+- View and like counts
+- Direct URL
+
+Preview these results first. Await approval before deeper retrieval.
+
+---
+
+### Official Reports Retrieval Prompt
+
+You're an expert AI investigator for official sources.
+
+Immediately perform a web search using this exact query:
+"[DYNAMIC_OFFICIAL_QUERY]"
+
+Specifically target authoritative sources from official websites such as whitehouse.gov, cityofla.org, ca.gov, lapdonline.org, or UN.org.
+
+Clearly return the top 2–3 official statements or reports, including:
+
+- Agency or official source name
+- Report title
+- One-line summary
+- Exact publication timestamp
+- Direct URL
+
+Preview results before retrieving further details.
+
+---
+
+### Live Webcam Retrieval Prompt
+
+You're an expert AI investigator for live webcams and live video streams.
+
+Use this exact query now:
+"[DYNAMIC_WEBCAM_QUERY]"
+
+Specifically search YouTube Live or Google Videos for webcams or live streaming video actively broadcasting "[EVENT_NAME]".
+
+Clearly provide the top 2 real-time feeds including:
+
+- Stream title
+- Current live status (confirm actively live: yes/no)
+- Viewer count
+- Direct URL
+
+Briefly preview these results. Await confirmation before retrieving additional details.
+
+---
+
+### Data Normalization Prompt
+
+You've now gathered data on **[EVENT_NAME]**.
+
+Normalize and structure data exactly like this:
+
+- Convert all timestamps to ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ)
+- Standardize engagement metrics (likes, views, retweets) clearly and consistently
+- Group all entries clearly by category: Twitter, YouTube, Official, Webcam
+- Summaries clearly limited to 25 words or fewer
+
+Produce final structured JSON exactly like:
+
+```json
+{
+  "event_name": "[EVENT_NAME]",
+  "locations": ["Location 1", "Location 2", "Location 3"],
+  "twitter": [...],
+  "youtube": [...],
+  "official": [...],
+  "webcam": [...]
+}
+```
+
+---
+
+### Final Integration Prompt
+
+🚀 Finalizing Data for YouMap Integration
+
+Perform exactly these tasks clearly and concisely:
+
+1. Assign precise geo-coordinates to each item (when available)
+2. Create simple, user-friendly labels (50 chars max) for each data point
+3. Clearly ensure all categories match the YouMap data schema
+4. Produce a fully structured final JSON payload, clearly formatted and ready for ingestion into YouMap.
+
+Confirm completion explicitly by stating:
+**"YouMap payload ready."**
+

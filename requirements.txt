@@ -1,0 +1,48 @@
+# Core dependencies for Real-Time Event Exploration System
+
+# AI and Language Models
+openai>=1.0.0
+
+# Web framework for API endpoints
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+
+# HTTP requests and web scraping
+requests>=2.31.0
+beautifulsoup4>=4.12.0
+httpx>=0.25.0
+
+# Data processing and analysis
+pandas>=2.1.0
+numpy>=1.25.0
+
+# Date and time handling
+python-dateutil>=2.8.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Async support
+aiohttp>=3.9.0
+aiofiles>=23.0.0
+
+# JSON schema validation
+pydantic>=2.4.0
+
+# Testing (optional)
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+
+# Development tools (optional)
+black>=23.9.0
+flake8>=6.1.0
+mypy>=1.6.0
+
+# Optional: For more advanced web scraping
+# selenium>=4.15.0
+# playwright>=1.39.0
+
+# Optional: For database support
+# sqlalchemy>=2.0.0
+# alembic>=1.12.0
+
