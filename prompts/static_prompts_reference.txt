@@ -1,3 +1,12 @@
+# 📋 STATIC PROMPTS REFERENCE
+# 
+# ⚠️  IMPORTANT: These are REFERENCE EXAMPLES only!
+# 🚀 The actual application uses the DYNAMIC PROMPT SYSTEM in modules/dynamic_prompts.py
+# 📝 These static examples show the original design intent and structure
+# 🎯 Use DynamicPromptGenerator class for all real prompt generation
+#
+# ════════════════════════════════════════════════════════════════════════════════
+
 ### Trending Events Discovery Prompt
 
 You're an AI-powered news scout. Quickly identify 7 trending real-time events happening now. For each event, clearly provide:

@@ -5,6 +5,34 @@ Build a modular, AI-driven system that conversationally guides users through dis
 
 ---
 
+## 🤖 **FOR AI ASSISTANTS: CONTEXT & CONTINUITY SYSTEM**
+
+> **⚡ CRITICAL**: If you're an AI assistant working on this project, read these files FIRST:
+
+### 📋 **1. Session Context Files**
+- **`AI_SESSION_LOG.md`** - Complete session history, actions taken, and project context
+- **`CODEBASE_MAP.md`** - Detailed architecture map with implementation status
+- **Recent Git commits** - Use `git log --oneline -10` to see latest changes
+
+### 🎯 **2. Dynamic Prompt System** 
+**IMPORTANT**: This project now uses **dynamic, context-aware prompts** instead of hardcoded templates.
+
+- **📁 `modules/dynamic_prompts.py`** - Context-aware prompt generation system
+- **🔧 Usage**: `DynamicPromptGenerator` creates prompts based on event type, urgency, and context
+- **⚠️ Note**: Static prompts in `prompts/prompts.txt` are now legacy - use dynamic system
+
+### 🛠️ **3. AI Session Management**
+- **📱 `ai_session_update.py`** - CLI utility to log your actions
+- **Usage**: `python ai_session_update.py --action "description" --files "file1,file2"`
+- **📊 Updates**: Automatically updates session logs with git status and changes
+
+### 🎨 **4. Code Style Guidelines**
+- **Emojis for visual scanning**: 🔍 🚀 ⚠️ 💡 🔧 📊 🎯
+- **Self-documenting code**: Clear variable names and comprehensive docstrings
+- **Status indicators**: ✅ implemented, ❓ needs review, 🔄 in progress
+
+---
+
 ## 📌 **1. Overview (High-Level Description)**
 
 * Clearly explain the system's overall purpose.
@@ -16,27 +44,35 @@ Build a modular, AI-driven system that conversationally guides users through dis
 ## 📂 **2. Directory & File Structure**
 
 ```
-project/
-├── modules/
-│   ├── step_0_trending_events.py
-│   ├── step_1_event_analysis.py
-│   ├── step_2_content_retrieval.py
-│   ├── step_3_data_normalization.py
-│   ├── step_4_final_integration.py
-│   ├── models.py
-│   ├── utils.py
-│   └── __init__.py
+real time scanner/
+├── 🤖 AI_SESSION_LOG.md           # 📋 Session tracking & context
+├── 🗺️ CODEBASE_MAP.md            # 📊 Architecture documentation  
+├── 🔧 ai_session_update.py        # 🛠️ AI session management utility
 │
-├── prompts/
-│   ├── prompts.txt
-│   └── __init__.py
+├── modules/                       # 🏗️ Core processing pipeline
+│   ├── 🎯 dynamic_prompts.py      # ✅ Context-aware prompt generation
+│   ├── step_0_trending_events.py  # ❓ Event detection (needs implementation)
+│   ├── step_1_event_analysis.py   # ❓ Analysis engine (needs implementation)
+│   ├── step_2_content_retrieval.py # ❓ Content fetcher (needs implementation)
+│   ├── step_3_data_normalization.py # ❓ Data cleaner (needs implementation)
+│   ├── step_4_final_integration.py # ❓ Final integration (needs implementation)
+│   ├── models.py                   # ❓ Data models (needs implementation)
+│   ├── utils.py                    # ❓ Helper functions (needs implementation)
+│   └── __init__.py                 # ✅ Package initializer
 │
-├── results/
-│   └── __init__.py
+├── prompts/                       # 💭 AI prompt management
+│   ├── prompts.txt                 # 📄 Legacy static prompts (superseded)
+│   └── __init__.py                 # ✅ Package initializer
 │
-├── requirements.txt
-└── README.md
+├── results/                       # 📊 Output storage
+│   └── __init__.py                 # ✅ Package initializer
+│
+├── requirements.txt               # 📋 Dependencies
+├── .env.template                  # 🔐 Environment config template
+└── README.md                      # 📖 This documentation
 ```
+
+**Status Legend**: ✅ Implemented | ❓ Needs Implementation | 🔄 In Progress
 
 ---
 
